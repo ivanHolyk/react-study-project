@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { apiHandler } from "../nagerDateApi";
+import { apiHandler, CountryInfoDto, CountryV3Dto } from "../nagerDateApi";
 
 function generateUniqueRandomIndexes(runs, maxIndex) {
   if (runs > maxIndex) {
@@ -23,6 +23,9 @@ function getRandomInt(min, max) {
 
 export const useCountryStore = create((set, get) => ({
   countries: [],
+  /**
+   * @type {CountryInfoDto}
+   */
   country: undefined,
   randomCountriesId: [],
   randomCountries: [],

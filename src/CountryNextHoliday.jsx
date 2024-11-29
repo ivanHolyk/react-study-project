@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Holiday from "./HolidayComponent";
+import { Link ,NavLink} from "react-router";
+
 
 function CountryNextHoliday({ country }) {
   const [holiday, setHoliday] = useState(null);
@@ -51,7 +53,7 @@ function CountryNextHoliday({ country }) {
   return (
     <div>
       <p>
-        <a href={`/country/${country.countryCode}`}>{country.name}</a>
+        <Link to={`/country/${country.countryCode}`}>{country.name}</Link>
       </p>
       <Holiday holiday={holiday} />
     </div>

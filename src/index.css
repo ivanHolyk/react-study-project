@@ -50,6 +50,13 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.btn.active {
+  background-color: #0d6efd; /* Active state background */
+  color: #ffffff; /* Active state text color */
+  border-color: #0a58ca; /* Active state border color */
+  font-weight: bold; /* Make it stand out more */
+  transform: scale(1.05); /* Slightly enlarge the button */
+}
 
 @media (prefers-color-scheme: light) {
   :root {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { useCountryStore } from "./store/country";
 import CountryNextHoliday from "./CountryNextHoliday";
+import { Link, NavLink } from "react-router";
 
 function App() {
   const countries = useCountryStore((state) => state.countries); // Access the countries from the store
@@ -54,14 +54,15 @@ function App() {
             onChange={handleInputChange}
           />
           <div>
-            Countries list:
-            {filteredCountries.length}
+            {`Countries list: ${filteredCountries.length}`}
             <ul>
               {filteredCountries && filteredCountries.length > 0 ? (
                 filteredCountries.map((country, index) => (
-                  <li
-                    key={index}
-                  >{`${country.countryCode} - ${country.name}`}</li>
+                  <li key={index}>
+                    <Link to={`/country/${country.countryCode}`}>
+                      {`${country.countryCode} - ${country.name}`}{" "}
+                    </Link>
+                  </li>
                 ))
               ) : (
                 <p>No countries</p>
@@ -72,8 +73,8 @@ function App() {
         <div style={{ maxWidth: "50%" }}>
           <h3>Random countries widget</h3>
           <div>
-            {randomCountries.map((rc) => (
-              <CountryNextHoliday country={rc}></CountryNextHoliday>
+            {randomCountries.map((rc, index) => (
+              <CountryNextHoliday key={index} country={rc}></CountryNextHoliday>
             ))}
           </div>
         </div>
