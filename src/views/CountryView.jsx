@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useCountryStore } from "./store/country";
-import { useHolidayStore } from "./store/holiday";
-import Holiday from "./HolidayComponent";
+import { useCountryStore } from "../store/country";
+import { useHolidayStore } from "../store/holiday";
 import { useState, useEffect } from "react";
-import { CountryInfoDto } from "./nagerDateApi";
+import { CountryInfoDto } from "../nagerDateApi";
+import { HolidayComponent } from "../components/HolidayComponent";
 
-export function CountryView() {
+function CountryView() {
   const { id } = useParams();
   /**
    * @type { CountryInfoDto}
@@ -56,7 +56,7 @@ export function CountryView() {
       <div>
         {holidaysByYear.map((h, index) => (
           <div key={index} className="border rounded mb-1">
-            <Holiday holiday={h}></Holiday>
+            <HolidayComponent holiday={h} />
           </div>
         ))}
       </div>

@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import { BrowserRouter, Route, Routes } from "react-router";
-import { CountryView } from "./CountryView.jsx";
+import CountryView from "./views/CountryView.jsx";
+import HomeView from "./views/HomeView.jsx";
 
 const root = document.getElementById("root");
 
@@ -11,7 +11,7 @@ createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route index element={<App />} />
+        <Route index element={<HomeView />} />
         <Route path="/country/:id" element={<CountryView />} />
       </Routes>
     </BrowserRouter>

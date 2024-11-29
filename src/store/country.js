@@ -29,7 +29,18 @@ export const useCountryStore = create((set, get) => ({
   country: undefined,
   randomCountriesId: [],
   randomCountries: [],
-
+  inputCountry: "",
+  filteredCountries: [],
+  setInputCountry: (input) => {
+    set((state) => ({
+      inputCountry: input,
+      filteredCountries: state.countries.filter(
+        (c) =>
+          c.name.toLowerCase().includes(input.toLowerCase()) ||
+          c.countryCode.toLowerCase().includes(input.toLowerCase())
+      ),
+    }));
+  },
   generateRandomCountriesId: (force = false) => {
     const { countries, randomCountriesId } = get();
     const result =
@@ -51,7 +62,7 @@ export const useCountryStore = create((set, get) => ({
   fetchCountries: async () => {
     try {
       const countries = await apiHandler.getAvailableCountries();
-      set({ countries });
+      set({ countries, filteredCountries: countries });
 
       // Automatically generate random countries after fetching if not already set
       if (get().randomCountriesId.length === 0) {

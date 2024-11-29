@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Holiday from "./HolidayComponent";
-import { Link ,NavLink} from "react-router";
 
+import { Link } from "react-router";
+import { CountryV3Dto } from "../nagerDateApi";
+import { HolidayComponent } from "./HolidayComponent";
 
+/**
+ *
+ * @param {CountryV3Dto} param0
+ * @returns
+ */
 function CountryNextHoliday({ country }) {
   const [holiday, setHoliday] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,9 +61,9 @@ function CountryNextHoliday({ country }) {
       <p>
         <Link to={`/country/${country.countryCode}`}>{country.name}</Link>
       </p>
-      <Holiday holiday={holiday} />
+      <HolidayComponent holiday={holiday} />
     </div>
   );
 }
 
-export default CountryNextHoliday;
+export { CountryNextHoliday };

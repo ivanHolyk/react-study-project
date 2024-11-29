@@ -1,12 +1,13 @@
 import React from "react";
-import { PublicHolidayV3Dto } from "./nagerDateApi";
+import { PublicHolidayV3Dto } from "../nagerDateApi";
+
 /**
  * Component for displaying a holiday.
  *
  * @param {{ holiday: PublicHolidayV3Dto }} props - The props for the Holiday component.
  * @returns {JSX.Element} The rendered Holiday component.
  */
-function Holiday({ holiday }) {
+function HolidayComponent({ holiday }) {
   return (
     <div>
       {holiday.name}, {holiday.localName}
@@ -22,4 +23,4 @@ function Holiday({ holiday }) {
   );
 }
 
-export default Holiday;
+export { HolidayComponent };
